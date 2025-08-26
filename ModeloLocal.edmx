@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoAnalisisModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="sp_LoginUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="DireccionIp" Type="varchar" Mode="In" />
+          <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+          <Parameter Name="SistemaOperativo" Type="varchar" Mode="In" />
+          <Parameter Name="Dispositivo" Type="varchar" Mode="In" />
+          <Parameter Name="Browser" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Accion" Type="varchar" Mode="In" />
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="IdGenero" Type="int" Mode="In" />
+          <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoMovil" Type="varchar" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="Pregunta" Type="varchar" Mode="In" />
+          <Parameter Name="Respuesta" Type="varchar" Mode="In" />
+          <Parameter Name="IdRole" Type="int" Mode="In" />
+          <Parameter Name="Fotografia" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="LimpiarFoto" Type="bit" Mode="In" />
+          <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+          <Parameter Name="Buscar" Type="varchar" Mode="In" />
+          <Parameter Name="Pagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="HardDelete" Type="bit" Mode="In" />
+          <Parameter Name="PasswordActual" Type="varchar" Mode="In" />
+          <Parameter Name="PasswordNueva" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProyectoAnalisisModel1StoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoAnalisisModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProyectoAnalisisEntities1" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_LoginUsuario" ReturnType="Collection(ProyectoAnalisisModel1.sp_LoginUsuario_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="DireccionIp" Mode="In" Type="String" />
+            <Parameter Name="UserAgent" Mode="In" Type="String" />
+            <Parameter Name="SistemaOperativo" Mode="In" Type="String" />
+            <Parameter Name="Dispositivo" Mode="In" Type="String" />
+            <Parameter Name="Browser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_CRUD" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_CRUD_Result)">
+            <Parameter Name="Accion" Mode="In" Type="String" />
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="IdGenero" Mode="In" Type="Int32" />
+            <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="TelefonoMovil" Mode="In" Type="String" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Pregunta" Mode="In" Type="String" />
+            <Parameter Name="Respuesta" Mode="In" Type="String" />
+            <Parameter Name="IdRole" Mode="In" Type="Int32" />
+            <Parameter Name="Fotografia" Mode="In" Type="Binary" />
+            <Parameter Name="LimpiarFoto" Mode="In" Type="Boolean" />
+            <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+            <Parameter Name="Buscar" Mode="In" Type="String" />
+            <Parameter Name="Pagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="HardDelete" Mode="In" Type="Boolean" />
+            <Parameter Name="PasswordActual" Mode="In" Type="String" />
+            <Parameter Name="PasswordNueva" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_LoginUsuario_Result">
+          <Property Type="String" Name="IdUsuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SesionActual" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_CRUD_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoAnalisisModel1StoreContainer" CdmEntityContainer="ProyectoAnalisisEntities1" >
+          <FunctionImportMapping FunctionImportName="sp_LoginUsuario" FunctionName="ProyectoAnalisisModel1.Store.sp_LoginUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_LoginUsuario_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="SesionActual" ColumnName="SesionActual" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_CRUD" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_CRUD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_CRUD_Result">
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

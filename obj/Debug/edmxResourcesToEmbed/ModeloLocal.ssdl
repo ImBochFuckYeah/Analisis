@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoAnalisisModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="sp_LoginUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="DireccionIp" Type="varchar" Mode="In" />
+    <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+    <Parameter Name="SistemaOperativo" Type="varchar" Mode="In" />
+    <Parameter Name="Dispositivo" Type="varchar" Mode="In" />
+    <Parameter Name="Browser" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Accion" Type="varchar" Mode="In" />
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+    <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="IdGenero" Type="int" Mode="In" />
+    <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+    <Parameter Name="TelefonoMovil" Type="varchar" Mode="In" />
+    <Parameter Name="IdSucursal" Type="int" Mode="In" />
+    <Parameter Name="Pregunta" Type="varchar" Mode="In" />
+    <Parameter Name="Respuesta" Type="varchar" Mode="In" />
+    <Parameter Name="IdRole" Type="int" Mode="In" />
+    <Parameter Name="Fotografia" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="LimpiarFoto" Type="bit" Mode="In" />
+    <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+    <Parameter Name="Buscar" Type="varchar" Mode="In" />
+    <Parameter Name="Pagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="HardDelete" Type="bit" Mode="In" />
+    <Parameter Name="PasswordActual" Type="varchar" Mode="In" />
+    <Parameter Name="PasswordNueva" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProyectoAnalisisModel1StoreContainer" />
+</Schema>

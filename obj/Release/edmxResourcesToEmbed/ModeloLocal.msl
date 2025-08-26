@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProyectoAnalisisModel1StoreContainer" CdmEntityContainer="ProyectoAnalisisEntities1">
+    <FunctionImportMapping FunctionImportName="sp_LoginUsuario" FunctionName="ProyectoAnalisisModel1.Store.sp_LoginUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_LoginUsuario_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="SesionActual" ColumnName="SesionActual" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoAnalisisModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProyectoAnalisisEntities1" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_LoginUsuario" ReturnType="Collection(ProyectoAnalisisModel1.sp_LoginUsuario_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="DireccionIp" Mode="In" Type="String" />
+      <Parameter Name="UserAgent" Mode="In" Type="String" />
+      <Parameter Name="SistemaOperativo" Mode="In" Type="String" />
+      <Parameter Name="Dispositivo" Mode="In" Type="String" />
+      <Parameter Name="Browser" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_CRUD" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_CRUD_Result)">
+      <Parameter Name="Accion" Mode="In" Type="String" />
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="IdGenero" Mode="In" Type="Int32" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="TelefonoMovil" Mode="In" Type="String" />
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Pregunta" Mode="In" Type="String" />
+      <Parameter Name="Respuesta" Mode="In" Type="String" />
+      <Parameter Name="IdRole" Mode="In" Type="Int32" />
+      <Parameter Name="Fotografia" Mode="In" Type="Binary" />
+      <Parameter Name="LimpiarFoto" Mode="In" Type="Boolean" />
+      <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+      <Parameter Name="Buscar" Mode="In" Type="String" />
+      <Parameter Name="Pagina" Mode="In" Type="Int32" />
+      <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+      <Parameter Name="HardDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="PasswordActual" Mode="In" Type="String" />
+      <Parameter Name="PasswordNueva" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_LoginUsuario_Result">
+    <Property Type="String" Name="IdUsuario" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SesionActual" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_CRUD_Result">
+    <Property Type="Int32" Name="Resultado" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="23" />
+  </ComplexType>
+</Schema>
