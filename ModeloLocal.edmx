@@ -14,14 +14,23 @@
           <Parameter Name="Dispositivo" Type="varchar" Mode="In" />
           <Parameter Name="Browser" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="sp_Usuario_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Accion" Type="varchar" Mode="In" />
+        <Function Name="sp_Password_ObtenerPreguntas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_PasswordQA_ValidarYActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="Respuesta" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="DireccionIp" Type="varchar" Mode="In" />
+          <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_Actualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Apellido" Type="varchar" Mode="In" />
           <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
           <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
-          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
           <Parameter Name="IdGenero" Type="int" Mode="In" />
           <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
           <Parameter Name="TelefonoMovil" Type="varchar" Mode="In" />
@@ -32,12 +41,51 @@
           <Parameter Name="Fotografia" Type="varbinary(max)" Mode="In" />
           <Parameter Name="LimpiarFoto" Type="bit" Mode="In" />
           <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_CambiarPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="PasswordActual" Type="nvarchar" Mode="In" />
+          <Parameter Name="PasswordNueva" Type="nvarchar" Mode="In" />
+          <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+          <Parameter Name="DireccionIp" Type="varchar" Mode="In" />
+          <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_Crear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="IdGenero" Type="int" Mode="In" />
+          <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoMovil" Type="varchar" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="Pregunta" Type="varchar" Mode="In" />
+          <Parameter Name="Respuesta" Type="varchar" Mode="In" />
+          <Parameter Name="IdRole" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
+          <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="HardDelete" Type="bit" Mode="In" />
+          <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_Listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Buscar" Type="varchar" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
+          <Parameter Name="IdRole" Type="int" Mode="In" />
           <Parameter Name="Pagina" Type="int" Mode="In" />
           <Parameter Name="TamanoPagina" Type="int" Mode="In" />
-          <Parameter Name="HardDelete" Type="bit" Mode="In" />
-          <Parameter Name="PasswordActual" Type="varchar" Mode="In" />
-          <Parameter Name="PasswordNueva" Type="varchar" Mode="In" />
+          <Parameter Name="OrdenPor" Type="varchar" Mode="In" />
+          <Parameter Name="OrdenDir" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Usuario_Obtener" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+          <Parameter Name="IncluirFoto" Type="bit" Mode="In" />
+          <Parameter Name="IncluirAuditoria" Type="bit" Mode="In" />
         </Function>
         <EntityContainer Name="ProyectoAnalisisModel1StoreContainer" />
       </Schema></edmx:StorageModels>
@@ -79,6 +127,79 @@
             <Parameter Name="PasswordActual" Mode="In" Type="String" />
             <Parameter Name="PasswordNueva" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_Password_ObtenerPreguntas" ReturnType="Collection(ProyectoAnalisisModel1.sp_Password_ObtenerPreguntas_Result)">
+          <Parameter Name="IdUsuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PasswordQA_ValidarYActualizar" ReturnType="Collection(ProyectoAnalisisModel1.sp_PasswordQA_ValidarYActualizar_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="Respuesta" Mode="In" Type="String" />
+            <Parameter Name="NuevaPassword" Mode="In" Type="String" />
+            <Parameter Name="DireccionIp" Mode="In" Type="String" />
+            <Parameter Name="UserAgent" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_Actualizar" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Actualizar_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="IdGenero" Mode="In" Type="Int32" />
+            <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="TelefonoMovil" Mode="In" Type="String" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Pregunta" Mode="In" Type="String" />
+            <Parameter Name="Respuesta" Mode="In" Type="String" />
+            <Parameter Name="IdRole" Mode="In" Type="Int32" />
+            <Parameter Name="Fotografia" Mode="In" Type="Binary" />
+            <Parameter Name="LimpiarFoto" Mode="In" Type="Boolean" />
+            <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_CambiarPassword" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_CambiarPassword_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="PasswordActual" Mode="In" Type="String" />
+            <Parameter Name="PasswordNueva" Mode="In" Type="String" />
+            <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+            <Parameter Name="DireccionIp" Mode="In" Type="String" />
+            <Parameter Name="UserAgent" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_Crear" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Crear_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="IdGenero" Mode="In" Type="Int32" />
+            <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="TelefonoMovil" Mode="In" Type="String" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Pregunta" Mode="In" Type="String" />
+            <Parameter Name="Respuesta" Mode="In" Type="String" />
+            <Parameter Name="IdRole" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_Eliminar" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Eliminar_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="HardDelete" Mode="In" Type="Boolean" />
+            <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_Listar" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Listar_Result)">
+            <Parameter Name="Buscar" Mode="In" Type="String" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IdRole" Mode="In" Type="Int32" />
+            <Parameter Name="Pagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="OrdenPor" Mode="In" Type="String" />
+            <Parameter Name="OrdenDir" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Usuario_Obtener" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Obtener_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="IncluirFoto" Mode="In" Type="Boolean" />
+            <Parameter Name="IncluirAuditoria" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_LoginUsuario_Result">
           <Property Type="String" Name="IdUsuario" Nullable="false" MaxLength="100" />
@@ -91,6 +212,45 @@
         <ComplexType Name="sp_Usuario_CRUD_Result">
           <Property Type="Int32" Name="Resultado" Nullable="false" />
           <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Password_ObtenerPreguntas_Result">
+          <Property Type="Int32" Name="Exito" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <ComplexType Name="sp_PasswordQA_ValidarYActualizar_Result">
+          <Property Type="Int32" Name="Exito" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_Actualizar_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="22" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_CambiarPassword_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="22" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_Crear_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="28" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_Eliminar_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="22" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_Listar_Result">
+          <Property Type="String" Name="IdUsuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+          <Property Type="Int32" Name="IdStatusUsuario" Nullable="false" />
+          <Property Type="Int32" Name="IdRole" Nullable="false" />
+          <Property Type="String" Name="TelefonoMovil" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Usuario_Obtener_Result">
+          <Property Type="Int32" Name="Resultado" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="42" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -110,9 +270,72 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Usuario_CRUD" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_CRUD">
+          <FunctionImportMapping FunctionImportName="sp_Password_ObtenerPreguntas" FunctionName="ProyectoAnalisisModel1.Store.sp_Password_ObtenerPreguntas">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_CRUD_Result">
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Password_ObtenerPreguntas_Result">
+                <ScalarProperty Name="Exito" ColumnName="Exito" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PasswordQA_ValidarYActualizar" FunctionName="ProyectoAnalisisModel1.Store.sp_PasswordQA_ValidarYActualizar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_PasswordQA_ValidarYActualizar_Result">
+                <ScalarProperty Name="Exito" ColumnName="Exito" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_Actualizar" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_Actualizar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_Actualizar_Result">
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_CambiarPassword" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_CambiarPassword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_CambiarPassword_Result">
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_Crear" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_Crear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_Crear_Result">
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_Eliminar" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_Eliminar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_Eliminar_Result">
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_Listar" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_Listar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_Listar_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="IdStatusUsuario" ColumnName="IdStatusUsuario" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="TelefonoMovil" ColumnName="TelefonoMovil" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Usuario_Obtener" FunctionName="ProyectoAnalisisModel1.Store.sp_Usuario_Obtener">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoAnalisisModel1.sp_Usuario_Obtener_Result">
                 <ScalarProperty Name="Resultado" ColumnName="Resultado" />
                 <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
               </ComplexTypeMapping>

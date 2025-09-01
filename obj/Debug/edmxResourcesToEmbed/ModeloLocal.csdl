@@ -35,6 +35,79 @@
       <Parameter Name="PasswordActual" Mode="In" Type="String" />
       <Parameter Name="PasswordNueva" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_Password_ObtenerPreguntas" ReturnType="Collection(ProyectoAnalisisModel1.sp_Password_ObtenerPreguntas_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_PasswordQA_ValidarYActualizar" ReturnType="Collection(ProyectoAnalisisModel1.sp_PasswordQA_ValidarYActualizar_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="Respuesta" Mode="In" Type="String" />
+      <Parameter Name="NuevaPassword" Mode="In" Type="String" />
+      <Parameter Name="DireccionIp" Mode="In" Type="String" />
+      <Parameter Name="UserAgent" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_Actualizar" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Actualizar_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="IdGenero" Mode="In" Type="Int32" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="TelefonoMovil" Mode="In" Type="String" />
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Pregunta" Mode="In" Type="String" />
+      <Parameter Name="Respuesta" Mode="In" Type="String" />
+      <Parameter Name="IdRole" Mode="In" Type="Int32" />
+      <Parameter Name="Fotografia" Mode="In" Type="Binary" />
+      <Parameter Name="LimpiarFoto" Mode="In" Type="Boolean" />
+      <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_CambiarPassword" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_CambiarPassword_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="PasswordActual" Mode="In" Type="String" />
+      <Parameter Name="PasswordNueva" Mode="In" Type="String" />
+      <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+      <Parameter Name="DireccionIp" Mode="In" Type="String" />
+      <Parameter Name="UserAgent" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_Crear" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Crear_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="IdGenero" Mode="In" Type="Int32" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="TelefonoMovil" Mode="In" Type="String" />
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Pregunta" Mode="In" Type="String" />
+      <Parameter Name="Respuesta" Mode="In" Type="String" />
+      <Parameter Name="IdRole" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_Eliminar" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Eliminar_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="HardDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="UsuarioAccion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_Listar" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Listar_Result)">
+      <Parameter Name="Buscar" Mode="In" Type="String" />
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+      <Parameter Name="IdStatusUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="IdRole" Mode="In" Type="Int32" />
+      <Parameter Name="Pagina" Mode="In" Type="Int32" />
+      <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+      <Parameter Name="OrdenPor" Mode="In" Type="String" />
+      <Parameter Name="OrdenDir" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Usuario_Obtener" ReturnType="Collection(ProyectoAnalisisModel1.sp_Usuario_Obtener_Result)">
+      <Parameter Name="IdUsuario" Mode="In" Type="String" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="IncluirFoto" Mode="In" Type="Boolean" />
+      <Parameter Name="IncluirAuditoria" Mode="In" Type="Boolean" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_LoginUsuario_Result">
     <Property Type="String" Name="IdUsuario" Nullable="false" MaxLength="100" />
@@ -47,5 +120,44 @@
   <ComplexType Name="sp_Usuario_CRUD_Result">
     <Property Type="Int32" Name="Resultado" Nullable="false" />
     <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="23" />
+  </ComplexType>
+  <ComplexType Name="sp_Password_ObtenerPreguntas_Result">
+    <Property Type="Int32" Name="Exito" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="21" />
+  </ComplexType>
+  <ComplexType Name="sp_PasswordQA_ValidarYActualizar_Result">
+    <Property Type="Int32" Name="Exito" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="21" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_Actualizar_Result">
+    <Property Type="Int32" Name="Resultado" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="22" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_CambiarPassword_Result">
+    <Property Type="Int32" Name="Resultado" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="22" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_Crear_Result">
+    <Property Type="Int32" Name="Resultado" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="28" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_Eliminar_Result">
+    <Property Type="Int32" Name="Resultado" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="22" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_Listar_Result">
+    <Property Type="String" Name="IdUsuario" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+    <Property Type="Int32" Name="IdStatusUsuario" Nullable="false" />
+    <Property Type="Int32" Name="IdRole" Nullable="false" />
+    <Property Type="String" Name="TelefonoMovil" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_Usuario_Obtener_Result">
+    <Property Type="Int32" Name="Resultado" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="42" />
   </ComplexType>
 </Schema>
