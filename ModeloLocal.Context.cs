@@ -157,5 +157,273 @@ namespace Analisis
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_CRUD_Result>("sp_Usuario_CRUD", accionParameter, idUsuarioParameter, nombreParameter, apellidoParameter, fechaNacimientoParameter, idStatusUsuarioParameter, passwordParameter, idGeneroParameter, correoElectronicoParameter, telefonoMovilParameter, idSucursalParameter, preguntaParameter, respuestaParameter, idRoleParameter, fotografiaParameter, limpiarFotoParameter, usuarioAccionParameter, buscarParameter, paginaParameter, tamanoPaginaParameter, hardDeleteParameter, passwordActualParameter, passwordNuevaParameter);
         }
+    
+        public virtual ObjectResult<sp_Password_ObtenerPreguntas_Result> sp_Password_ObtenerPreguntas(string idUsuario)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Password_ObtenerPreguntas_Result>("sp_Password_ObtenerPreguntas", idUsuarioParameter);
+        }
+    
+        public virtual ObjectResult<sp_PasswordQA_ValidarYActualizar_Result> sp_PasswordQA_ValidarYActualizar(string idUsuario, string respuesta, string nuevaPassword, string direccionIp, string userAgent)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            var respuestaParameter = respuesta != null ?
+                new ObjectParameter("Respuesta", respuesta) :
+                new ObjectParameter("Respuesta", typeof(string));
+    
+            var nuevaPasswordParameter = nuevaPassword != null ?
+                new ObjectParameter("NuevaPassword", nuevaPassword) :
+                new ObjectParameter("NuevaPassword", typeof(string));
+    
+            var direccionIpParameter = direccionIp != null ?
+                new ObjectParameter("DireccionIp", direccionIp) :
+                new ObjectParameter("DireccionIp", typeof(string));
+    
+            var userAgentParameter = userAgent != null ?
+                new ObjectParameter("UserAgent", userAgent) :
+                new ObjectParameter("UserAgent", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PasswordQA_ValidarYActualizar_Result>("sp_PasswordQA_ValidarYActualizar", idUsuarioParameter, respuestaParameter, nuevaPasswordParameter, direccionIpParameter, userAgentParameter);
+        }
+    
+        public virtual ObjectResult<sp_Usuario_Actualizar_Result> sp_Usuario_Actualizar(string idUsuario, string nombre, string apellido, Nullable<System.DateTime> fechaNacimiento, Nullable<int> idStatusUsuario, string password, Nullable<int> idGenero, string correoElectronico, string telefonoMovil, Nullable<int> idSucursal, string pregunta, string respuesta, Nullable<int> idRole, byte[] fotografia, Nullable<bool> limpiarFoto, string usuarioAccion)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
+    
+            var idStatusUsuarioParameter = idStatusUsuario.HasValue ?
+                new ObjectParameter("IdStatusUsuario", idStatusUsuario) :
+                new ObjectParameter("IdStatusUsuario", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var idGeneroParameter = idGenero.HasValue ?
+                new ObjectParameter("IdGenero", idGenero) :
+                new ObjectParameter("IdGenero", typeof(int));
+    
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("CorreoElectronico", correoElectronico) :
+                new ObjectParameter("CorreoElectronico", typeof(string));
+    
+            var telefonoMovilParameter = telefonoMovil != null ?
+                new ObjectParameter("TelefonoMovil", telefonoMovil) :
+                new ObjectParameter("TelefonoMovil", typeof(string));
+    
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            var preguntaParameter = pregunta != null ?
+                new ObjectParameter("Pregunta", pregunta) :
+                new ObjectParameter("Pregunta", typeof(string));
+    
+            var respuestaParameter = respuesta != null ?
+                new ObjectParameter("Respuesta", respuesta) :
+                new ObjectParameter("Respuesta", typeof(string));
+    
+            var idRoleParameter = idRole.HasValue ?
+                new ObjectParameter("IdRole", idRole) :
+                new ObjectParameter("IdRole", typeof(int));
+    
+            var fotografiaParameter = fotografia != null ?
+                new ObjectParameter("Fotografia", fotografia) :
+                new ObjectParameter("Fotografia", typeof(byte[]));
+    
+            var limpiarFotoParameter = limpiarFoto.HasValue ?
+                new ObjectParameter("LimpiarFoto", limpiarFoto) :
+                new ObjectParameter("LimpiarFoto", typeof(bool));
+    
+            var usuarioAccionParameter = usuarioAccion != null ?
+                new ObjectParameter("UsuarioAccion", usuarioAccion) :
+                new ObjectParameter("UsuarioAccion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_Actualizar_Result>("sp_Usuario_Actualizar", idUsuarioParameter, nombreParameter, apellidoParameter, fechaNacimientoParameter, idStatusUsuarioParameter, passwordParameter, idGeneroParameter, correoElectronicoParameter, telefonoMovilParameter, idSucursalParameter, preguntaParameter, respuestaParameter, idRoleParameter, fotografiaParameter, limpiarFotoParameter, usuarioAccionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Usuario_CambiarPassword_Result> sp_Usuario_CambiarPassword(string idUsuario, string passwordActual, string passwordNueva, string usuarioAccion, string direccionIp, string userAgent)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            var passwordActualParameter = passwordActual != null ?
+                new ObjectParameter("PasswordActual", passwordActual) :
+                new ObjectParameter("PasswordActual", typeof(string));
+    
+            var passwordNuevaParameter = passwordNueva != null ?
+                new ObjectParameter("PasswordNueva", passwordNueva) :
+                new ObjectParameter("PasswordNueva", typeof(string));
+    
+            var usuarioAccionParameter = usuarioAccion != null ?
+                new ObjectParameter("UsuarioAccion", usuarioAccion) :
+                new ObjectParameter("UsuarioAccion", typeof(string));
+    
+            var direccionIpParameter = direccionIp != null ?
+                new ObjectParameter("DireccionIp", direccionIp) :
+                new ObjectParameter("DireccionIp", typeof(string));
+    
+            var userAgentParameter = userAgent != null ?
+                new ObjectParameter("UserAgent", userAgent) :
+                new ObjectParameter("UserAgent", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_CambiarPassword_Result>("sp_Usuario_CambiarPassword", idUsuarioParameter, passwordActualParameter, passwordNuevaParameter, usuarioAccionParameter, direccionIpParameter, userAgentParameter);
+        }
+    
+        public virtual ObjectResult<sp_Usuario_Crear_Result> sp_Usuario_Crear(string idUsuario, string nombre, string apellido, Nullable<System.DateTime> fechaNacimiento, Nullable<int> idGenero, string correoElectronico, string telefonoMovil, Nullable<int> idSucursal, string pregunta, string respuesta, Nullable<int> idRole, string password, Nullable<int> idStatusUsuario, string usuarioAccion)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
+    
+            var idGeneroParameter = idGenero.HasValue ?
+                new ObjectParameter("IdGenero", idGenero) :
+                new ObjectParameter("IdGenero", typeof(int));
+    
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("CorreoElectronico", correoElectronico) :
+                new ObjectParameter("CorreoElectronico", typeof(string));
+    
+            var telefonoMovilParameter = telefonoMovil != null ?
+                new ObjectParameter("TelefonoMovil", telefonoMovil) :
+                new ObjectParameter("TelefonoMovil", typeof(string));
+    
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            var preguntaParameter = pregunta != null ?
+                new ObjectParameter("Pregunta", pregunta) :
+                new ObjectParameter("Pregunta", typeof(string));
+    
+            var respuestaParameter = respuesta != null ?
+                new ObjectParameter("Respuesta", respuesta) :
+                new ObjectParameter("Respuesta", typeof(string));
+    
+            var idRoleParameter = idRole.HasValue ?
+                new ObjectParameter("IdRole", idRole) :
+                new ObjectParameter("IdRole", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var idStatusUsuarioParameter = idStatusUsuario.HasValue ?
+                new ObjectParameter("IdStatusUsuario", idStatusUsuario) :
+                new ObjectParameter("IdStatusUsuario", typeof(int));
+    
+            var usuarioAccionParameter = usuarioAccion != null ?
+                new ObjectParameter("UsuarioAccion", usuarioAccion) :
+                new ObjectParameter("UsuarioAccion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_Crear_Result>("sp_Usuario_Crear", idUsuarioParameter, nombreParameter, apellidoParameter, fechaNacimientoParameter, idGeneroParameter, correoElectronicoParameter, telefonoMovilParameter, idSucursalParameter, preguntaParameter, respuestaParameter, idRoleParameter, passwordParameter, idStatusUsuarioParameter, usuarioAccionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Usuario_Eliminar_Result> sp_Usuario_Eliminar(string idUsuario, Nullable<bool> hardDelete, string usuarioAccion)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            var hardDeleteParameter = hardDelete.HasValue ?
+                new ObjectParameter("HardDelete", hardDelete) :
+                new ObjectParameter("HardDelete", typeof(bool));
+    
+            var usuarioAccionParameter = usuarioAccion != null ?
+                new ObjectParameter("UsuarioAccion", usuarioAccion) :
+                new ObjectParameter("UsuarioAccion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_Eliminar_Result>("sp_Usuario_Eliminar", idUsuarioParameter, hardDeleteParameter, usuarioAccionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Usuario_Listar_Result> sp_Usuario_Listar(string buscar, Nullable<int> idSucursal, Nullable<int> idStatusUsuario, Nullable<int> idRole, Nullable<int> pagina, Nullable<int> tamanoPagina, string ordenPor, string ordenDir)
+        {
+            var buscarParameter = buscar != null ?
+                new ObjectParameter("Buscar", buscar) :
+                new ObjectParameter("Buscar", typeof(string));
+    
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            var idStatusUsuarioParameter = idStatusUsuario.HasValue ?
+                new ObjectParameter("IdStatusUsuario", idStatusUsuario) :
+                new ObjectParameter("IdStatusUsuario", typeof(int));
+    
+            var idRoleParameter = idRole.HasValue ?
+                new ObjectParameter("IdRole", idRole) :
+                new ObjectParameter("IdRole", typeof(int));
+    
+            var paginaParameter = pagina.HasValue ?
+                new ObjectParameter("Pagina", pagina) :
+                new ObjectParameter("Pagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var ordenPorParameter = ordenPor != null ?
+                new ObjectParameter("OrdenPor", ordenPor) :
+                new ObjectParameter("OrdenPor", typeof(string));
+    
+            var ordenDirParameter = ordenDir != null ?
+                new ObjectParameter("OrdenDir", ordenDir) :
+                new ObjectParameter("OrdenDir", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_Listar_Result>("sp_Usuario_Listar", buscarParameter, idSucursalParameter, idStatusUsuarioParameter, idRoleParameter, paginaParameter, tamanoPaginaParameter, ordenPorParameter, ordenDirParameter);
+        }
+    
+        public virtual ObjectResult<sp_Usuario_Obtener_Result> sp_Usuario_Obtener(string idUsuario, string correoElectronico, Nullable<bool> incluirFoto, Nullable<bool> incluirAuditoria)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("CorreoElectronico", correoElectronico) :
+                new ObjectParameter("CorreoElectronico", typeof(string));
+    
+            var incluirFotoParameter = incluirFoto.HasValue ?
+                new ObjectParameter("IncluirFoto", incluirFoto) :
+                new ObjectParameter("IncluirFoto", typeof(bool));
+    
+            var incluirAuditoriaParameter = incluirAuditoria.HasValue ?
+                new ObjectParameter("IncluirAuditoria", incluirAuditoria) :
+                new ObjectParameter("IncluirAuditoria", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Usuario_Obtener_Result>("sp_Usuario_Obtener", idUsuarioParameter, correoElectronicoParameter, incluirFotoParameter, incluirAuditoriaParameter);
+        }
     }
 }

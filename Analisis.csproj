@@ -164,7 +164,15 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ObtenerPreguntaController.cs" />
+    <Compile Include="Controllers\UsuarioActualizarController.cs" />
+    <Compile Include="Controllers\UsuarioCambiarPasswordautenticadoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\UsuarioCrearController.cs" />
+    <Compile Include="Controllers\UsuarioEliminarController.cs" />
+    <Compile Include="Controllers\UsuarioListarController.cs" />
+    <Compile Include="Controllers\UsuarioObtenerController.cs" />
+    <Compile Include="Controllers\ValidarRespuestaYActualizarController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,7 +197,31 @@
     <Compile Include="sp_LoginUsuario_Result.cs">
       <DependentUpon>ModeloLocal.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_PasswordQA_ValidarYActualizar_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Password_ObtenerPreguntas_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Usuario_Actualizar_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Usuario_CambiarPassword_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Usuario_Crear_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_Usuario_CRUD_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Usuario_Eliminar_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Usuario_Listar_Result.cs">
+      <DependentUpon>ModeloLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Usuario_Obtener_Result.cs">
       <DependentUpon>ModeloLocal.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -264,8 +296,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\ObtenerPregunta\" />
     <Folder Include="Views\prueba\" />
+    <Folder Include="Views\UsuarioActualizar\" />
+    <Folder Include="Views\UsuarioCambiarPasswordautenticado\" />
+    <Folder Include="Views\UsuarioCrear\" />
+    <Folder Include="Views\UsuarioEliminar\" />
+    <Folder Include="Views\UsuarioListar\" />
+    <Folder Include="Views\UsuarioObtener\" />
     <Folder Include="Views\Usuario\" />
+    <Folder Include="Views\ValidarRespuestaYActualizar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

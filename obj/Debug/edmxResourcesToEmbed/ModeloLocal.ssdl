@@ -9,14 +9,23 @@
     <Parameter Name="Dispositivo" Type="varchar" Mode="In" />
     <Parameter Name="Browser" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="sp_Usuario_CRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Accion" Type="varchar" Mode="In" />
+  <Function Name="sp_Password_ObtenerPreguntas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PasswordQA_ValidarYActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="Respuesta" Type="nvarchar" Mode="In" />
+    <Parameter Name="NuevaPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="DireccionIp" Type="varchar" Mode="In" />
+    <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_Actualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
     <Parameter Name="Apellido" Type="varchar" Mode="In" />
     <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
     <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
-    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
     <Parameter Name="IdGenero" Type="int" Mode="In" />
     <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
     <Parameter Name="TelefonoMovil" Type="varchar" Mode="In" />
@@ -27,12 +36,51 @@
     <Parameter Name="Fotografia" Type="varbinary(max)" Mode="In" />
     <Parameter Name="LimpiarFoto" Type="bit" Mode="In" />
     <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_CambiarPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="PasswordActual" Type="nvarchar" Mode="In" />
+    <Parameter Name="PasswordNueva" Type="nvarchar" Mode="In" />
+    <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+    <Parameter Name="DireccionIp" Type="varchar" Mode="In" />
+    <Parameter Name="UserAgent" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_Crear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+    <Parameter Name="IdGenero" Type="int" Mode="In" />
+    <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+    <Parameter Name="TelefonoMovil" Type="varchar" Mode="In" />
+    <Parameter Name="IdSucursal" Type="int" Mode="In" />
+    <Parameter Name="Pregunta" Type="varchar" Mode="In" />
+    <Parameter Name="Respuesta" Type="varchar" Mode="In" />
+    <Parameter Name="IdRole" Type="int" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
+    <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="HardDelete" Type="bit" Mode="In" />
+    <Parameter Name="UsuarioAccion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_Listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Buscar" Type="varchar" Mode="In" />
+    <Parameter Name="IdSucursal" Type="int" Mode="In" />
+    <Parameter Name="IdStatusUsuario" Type="int" Mode="In" />
+    <Parameter Name="IdRole" Type="int" Mode="In" />
     <Parameter Name="Pagina" Type="int" Mode="In" />
     <Parameter Name="TamanoPagina" Type="int" Mode="In" />
-    <Parameter Name="HardDelete" Type="bit" Mode="In" />
-    <Parameter Name="PasswordActual" Type="varchar" Mode="In" />
-    <Parameter Name="PasswordNueva" Type="varchar" Mode="In" />
+    <Parameter Name="OrdenPor" Type="varchar" Mode="In" />
+    <Parameter Name="OrdenDir" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Usuario_Obtener" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+    <Parameter Name="IncluirFoto" Type="bit" Mode="In" />
+    <Parameter Name="IncluirAuditoria" Type="bit" Mode="In" />
   </Function>
   <EntityContainer Name="ProyectoAnalisisModel1StoreContainer" />
 </Schema>
